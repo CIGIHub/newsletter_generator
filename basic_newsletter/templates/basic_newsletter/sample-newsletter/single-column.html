@@ -30,7 +30,7 @@
                         {% endfor %}
                         {% for category in issue.non_headline_categories %}
                         <tr>
-                            <td align="center" valign="top" style="{% base_styles 'td' %} padding: 20px;" class="nonHeadlineContainer">
+                            <td align="center" valign="top" style="{% base_styles 'td' %} padding: 10px 20px 10px 20px;" class="nonHeadlineContainer">
                                 {% include 'basic_newsletter/sample-newsletter/single-column/no-image-section.html' with category=category template=issue.resolved_template %}
                             </td>
                         </tr>
