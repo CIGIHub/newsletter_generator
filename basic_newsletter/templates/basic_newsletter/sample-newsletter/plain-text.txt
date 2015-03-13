@@ -1,0 +1,27 @@
+{% load paths %}
+
+{{ issue.newsletter.title }}
+
+{% for category in issue.headline_categories %}
+    {% for newsitem in issue|get_stories:category %}
+        {{ newsitem.title }}
+        {{ newsitem.url }}
+        {{ newsitem.description }}
+    {% endfor %}
+{% endfor %}
+{% for category in issue.non_headline_categories %}
+     {% for newsitem in issue|get_stories:category %}
+        {{ newsitem.title }}
+        {{ newsitem.url }}
+        {{ newsitem.description }}
+    {% endfor %}
+{% endfor %}
+
+CIGIOnline: https://www.cigionline.org
+
+Facebook: https://www.facebook.com/cigionline
+Twitter: https://twitter.com/cigionline
+CIGI Blogs: https://www.cigionline.org/blogs
+
+
+

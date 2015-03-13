@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+{% block additional_head_css %}<link type="text/css" rel="stylesheet" media="all"
+          href="{% static 'basic_newsletter/css/styles.css' %}"/>{% endblock %}
+
+{% block content %}
+
+<div class="actions clearfix">
+    <a class="button" href="{% url 'newsletter:create_issue' %}">Create a newsletter</a>
+</div>
+{% if newsletter_issue_list %}
+
+{% for newsletter, issue_list_draft, issue_list_ready, issue_list_published  in newsletter_issue_list %}
+
+    <h2>{{ newsletter.title }}</h2>
+    <section class="issues draft">
+    <h3>Draft</h3>
+    <ul class="{{ newsletter.short_title }} issue-list"> 
+        {% for issue in issue_list_draft %}
+                <li class="{% cycle 'even' 'odd' %}" >
+                    <ul>
+                        <li>{{ issue.issue_date|date:"F Y"  }} </li>
+                        <li><a href="{% url 'newsletter:edit_issue' issue.id %}">Edit</a></li>
+                        <li><a href="{% url 'newsletter:preview_issue' issue.id %}">Preview</a></li>
+                        <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Test Email</a></li>
+                        <li><a href="{% url 'newsletter:delete_issue' issue.id %}">Delete</a></li>
+                    </ul>
+                </li>
+        {% endfor %}
+    </ul>
+    </section>
+
+    <section class="issues ready-to-test">
+    <h3>Ready To Test</h3>
+    {% if not issue_list_ready %}
+    <p>There are currently no newsletters ready to publish.</p>
+    {% else %}
+        <ul class="{{ newsletter.short_title }} issue-list">
+            {% for issue in issue_list_ready %}
+                    <li class="{% cycle 'even' 'odd' %}" >
+                        <ul>
+                            <li>{{ issue.issue_date|date:"F Y"  }} </li>
+                            <li><a href="{% url 'newsletter:edit_issue' issue.id %}">Edit</a></li>
+                            <li><a href="{% url 'newsletter:preview_issue' issue.id %}">Preview</a></li>
+                            <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Test Email</a></li>
+                            <li><a href="{% url 'newsletter:publish_issue' issue.id %}">Publish</a></li>
+
+                        </ul>
+                    </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    </section>
+    
+    <section class="issues published">
+    <h3>Published</h3>
+    <ul class="{{ newsletter.short_title }} issue-list">
+        {% for issue in issue_list_published %}
+                <li class="{% cycle 'even' 'odd' %}" >
+                    <ul>
+                        <li>{{ issue.issue_date|date:"F Y"  }}</li>
+                        <li>(Published Date {{ issue.published_date }})</li>
+                        <li><a href="{% url 'newsletter:edit_issue_for_web' issue.id %}">Edit</a></li>
+                        <li><a href="{% url 'newsletter:preview_issue' issue.id %}">View</a></li>
+                        <li><a href="{% url 'newsletter:reupload_issue' issue.id %}">Re-upload HTML</a></li>
+                    </ul>
+                </li>
+        {% endfor %}
+    </ul>
+    </section>  
+{% endfor %}  
+
+{% else %}
+    <p>No are newsletter issues available.</p>
+{% endif %}
+
+{% endblock %}

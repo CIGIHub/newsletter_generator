@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block additional_head_css %}<link type="text/css" rel="stylesheet" media="all"
+          href="{% static 'basic_newsletter/css/styles.css' %}"/>{% endblock %}
+
+
+{% block content %}
+
+<div class="issue new">
+    <h2>Create a Newsletter</h2>
+    <p>Select the newsletter type and issue date</p>
+    <form method="post" action="{% url 'newsletter:create_issue' %}" id="create-form">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="newsletter-type">
+    	{{ form.subject.errors }}
+    	<label for="id_newsletter_type">Newsletter:</label>
+    	{{ form.newsletter_type }}
+	</div>
+	<div class="issue-date">
+    	{{ form.subject.errors }}
+    	<label for="id_issue_date_month">Issue Date:</label>
+    	{{ form.issue_date }}
+	</div>
+    <div class="issue-categories">
+    	{{ form.sections.errors }}
+    	<label for="id_issue_date_month">Include Sections:</label>
+    	{{ form.sections }}
+	</div>
+    <div class="actions">
+        <a href="/">Cancel</a>
+    	<input type="submit" value="Next" name="create"/>
+    </div>
+</form>
+    
+</div>
+
+    
+{% endblock %}

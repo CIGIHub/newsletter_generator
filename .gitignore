@@ -1,0 +1,10 @@
+*.log
+*.pot
+*.pyc
+*.db
+local_settings.py
+.idea
+**/media/
+**/.sass-cache/
+app-messages/
+*.egg-info/

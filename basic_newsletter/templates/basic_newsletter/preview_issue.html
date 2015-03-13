@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block additional_head_css %}<link type="text/css" rel="stylesheet" media="all"
+          href="{% static 'basic_newsletter/css/styles.css' %}"/>{% endblock %}
+
+{% block content %}
+
+<h2>Preview Issue</h2>
+<h3>{{ issue.newsletter }}: {{ issue.issue_date | date:"F Y" }}</h3>
+<p>Published state: {{ issue.published_state }}</p>
+
+<form method="post" action="{% url 'newsletter:preview_issue' issue.id %}" enctype="multipart/form-data">
+{% csrf_token %}
+{#{% include issue.html_email_template %}#}
+<iframe src="{% url 'newsletter:preview_issue_html' issue.id %}"></iframe>
+{% if issue.published_state == 'Draft' %}
+	<div class="actions">
+		<input type="submit" name="draft" value="Edit Draft"/>
+        <input type="submit" name="send_email" value="Send Test Email"/>
+	    <input type="submit" name="to_test" value="Ready to Test"/>
+        <input type="submit" name="close" value="Close"/>
+	</div>
+{% elif issue.published_state == 'Ready to Test' %}
+    <div class="actions">
+		<input type="submit" name="draft" value="Edit Draft"/>
+	    <input type="submit" name="send_email" value="Send Test Email"/>
+        <input type="submit" name="close" value="Close"/>
+	</div>
+{% endif %}
+</form>
+
+{% endblock %}

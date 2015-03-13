@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block additional_head_css %}<link type="text/css" rel="stylesheet" media="all"
+          href="{% static 'basic_newsletter/css/styles.css' %}"/>{% endblock %}
+
+{% block additional_body_js %}<script src="{% static 'basic_newsletter/js/addform.js' %}"></script>{% endblock %}
+
+
+{% block content %}
+
+<h2>Edit</h2>
+<h3>{{ issue.newsletter }}: {{issue.issue_date | date:"F Y"}} </h3>
+<h3>State: {{ issue.published_state }} </h3>
+<div id="newsletter-form">
+<form method="post" action="{% url 'newsletter:edit_issue' issue.id %}" enctype="multipart/form-data">
+    <div class="actions">
+        <input type="submit" name="draft" value="Save Draft"/>
+        <input type="submit" name="preview" value="Preview"/>
+    </div>
+    {% csrf_token %}
+        {% for category, formset in headline_formsets %}
+            {% include 'basic_newsletter/headline_formset.html' with category=category formset=formset %}
+        {% endfor %}
+        {% for category, formset in non_headline_formsets %}
+            {% include 'basic_newsletter/headline_formset.html' with category=category formset=formset %}
+        {% endfor %}
+    <div class="actions">
+        {% if issue.published_state == 'Published' %}
+        <input type="submit" name="save_published" value="Save"/>
+        {% else %}
+        <input type="submit" name="draft" value="Save Draft"/>
+        <input type="submit" name="preview" value="Preview"/>
+        {% endif %}
+    </div>
+
+</form>
+</div>
+
+<div  class="clearfix"></div>
+{% endblock %}

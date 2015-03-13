@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block additional_head_css %}<link type="text/css" rel="stylesheet" media="all"
+          href="{% static 'basic_newsletter/css/styles.css' %}"/>{% endblock %}
+
+
+{% block content %}
+
+<h2>Send Internal Email: {{ issue.subject }}</h2>
+<div id="newsletter-form">
+
+<form method="post" action="{% url 'newsletter:test_issue' issue.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    Enter email addresses separated by commas for multiple recipients:
+    {{ form.recipient }} {{ form.recipient.errors }}
+    <br>
+    From Address:<br>
+    {{ form.sender }} {{ form.sender.errors }}
+    <div class="actions">
+        <input type="submit" name="send" value="Send"/>
+        <input type="submit" name="cancel" value="Cancel"/>
+    </div>
+
+</form>
+</div>
+<div  class="clearfix"></div>
+{% endblock %}

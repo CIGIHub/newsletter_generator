@@ -1,0 +1,230 @@
+/***  General  ***/
+.label {
+  color: #333333; }
+
+ul {
+  padding: 0px; }
+
+section {
+  padding: 0.5rem;
+  margin: 1.0rem 0; }
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden; }
+
+.delete input[type="checkbox"] {
+  visibility: hidden; }
+
+#wrapper {
+  width: 1020px;
+  margin: 0px auto;
+  background-color: #fff; }
+
+#main-block {
+  min-width: 1000px;
+  padding: 1rem; }
+
+iframe {
+  width: 800px;
+  height: 1600px; }
+
+ul li {
+  list-style: none;
+  margin: 0px; }
+
+/***  Home  ***/
+ul.issue-list li {
+  overflow: hidden;
+  width: 100%;
+  padding: 0.2rem 0;
+  border-bottom: solid 1px #d2d2d2; }
+  ul.issue-list li.even {
+    background-color: #eee; }
+  ul.issue-list li:hover {
+    background-color: #efe; }
+  ul.issue-list li li {
+    float: left;
+    border-bottom: none;
+    text-align: center;
+    width: 10%;
+    padding: 0 0.5rem; }
+    ul.issue-list li li a {
+      text-align: center; }
+    ul.issue-list li li:first-child {
+      padding-left: 0.5rem;
+      width: 20%;
+      background: none;
+      border: none;
+      border-radius: none;
+      text-align: left; }
+
+.actions {
+  margin: 0 auto;
+  width: 600px;
+  padding: 1rem 0;
+  text-align: center; }
+  .actions a.button, .actions input[type="submit"] {
+    color: black;
+    /*background: #F04127;*/
+    background: #efe;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.0rem;
+    border: solid 1px green;
+    text-transform: uppercase; }
+  .actions a.button:hover, .actions input[type="submit"]:hover {
+    text-decoration: none;
+    background-color: #d2d2d2;
+    border: solid 1px #d2d2d2; }
+
+#newsletter-form section {
+  display: inline-block;
+  width: 620px; }
+#newsletter-form .section-help {
+  display: inline-block;
+  vertical-align: top;
+  width: 330px;
+  margin-top: 65px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #efe; }
+  #newsletter-form .section-help ul li {
+    list-style: disc;
+    margin: 0 0 10px 40px; }
+  #newsletter-form .section-help h3 {
+    text-align: center;
+    margin-bottom: 10px; }
+  #newsletter-form .section-help .newsletter-regions {
+    text-align: center; }
+    #newsletter-form .section-help .newsletter-regions img {
+      width: 200px; }
+
+#create-form div {
+  padding: 5px 0; }
+#create-form label {
+  float: left;
+  width: 105px;
+  padding-top: 3px; }
+
+/***  Feature Content  ***/
+.story-title input {
+  width: 550px; }
+
+.story-link input {
+  width: 550px; }
+
+.story-description input {
+  width: 550px; }
+
+.story-weight input {
+  width: 50px; }
+
+.story-title,
+.story-image-preview,
+.story-image,
+.story-link,
+.story-description {
+  padding: 10px 0;
+  font-weight: bold; }
+
+.story-image {
+  height: 110px; }
+
+.story-image a {
+  font-size: 12px;
+  font-weight: normal;
+  word-wrap: break-word; }
+
+.description .label {
+  padding-top: 10px;
+  font-weight: bold; }
+
+.label span {
+  font-size: 12px;
+  font-weight: normal; }
+
+ul.messages .warning {
+  border: solid 1px yellow; }
+ul.messages .success {
+  border: solid 1px green; }
+ul.messages .error {
+  border: solid 1px red; }
+
+.error {
+  padding: 5px;
+  margin: 5px 0; }
+
+.errorlist {
+  border: solid 1px red;
+  padding: 5px;
+  color: red; }
+
+/***  Secondary  & Line items***/
+#id_secondary ul {
+  overflow: hidden; }
+
+#id_secondary li {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+
+#id_secondary input[type=text] {
+  width: 250px; }
+
+#id_secondary .weight input {
+  width: 50px; }
+
+.secondary-item textarea {
+  width: 250px; }
+
+.story {
+  vertical-align: top;
+  width: 580px;
+  padding: 10px;
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  background: #FAFAFA; }
+
+.stories {
+  padding: 5px; }
+  .stories .image-spacer {
+    width: 558px;
+    height: 130px;
+    border: solid 1px black;
+    text-align: center;
+    padding: 10px; }
+
+.add-story a, .delete a {
+  display: block;
+  padding: 5px;
+  background: #e0e6f3;
+  border-radius: 5px;
+  border: solid 1px #e0e6f3;
+  text-align: center;
+  width: 100px; }
+
+.story-weight {
+  visibility: hidden;
+  height: 0;
+  padding: 0; }
+
+#id_sender, #id_recipient {
+  width: 100%; }
+
+.forgot-password {
+  font-size: smaller;
+  text-transform: uppercase;
+  margin-top: 20px; }
+
+.action-prompt {
+  margin: 40px; }
+  .action-prompt ul {
+    margin-left: 60px;
+    list-style-type: disc;
+    list-style-position: inside; }
+    .action-prompt ul li {
+      list-style-type: disc; }

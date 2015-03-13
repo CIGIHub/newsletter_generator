@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{%  load paths %}
+{% load static from staticfiles %}
+{% block additional_head_css %}<link type="text/css" rel="stylesheet" media="all"
+          href="{% static 'basic_newsletter/css/styles.css' %}"/>{% endblock %}
+
+
+{% block content %}
+
+<h2>Publish Issue</h2>
+<h3>{{ issue.newsletter }}: {{ issue.issue_date | date:"F Y" }}</h3>
+    <div class="action-prompt">
+    <p>Are you sure you would like to publish the following issue? It cannot be unpublished.</p>
+    <p>Publishing causes the newsletter:</p>
+    <ul>
+        <li>To be emailed to all contacts on the '{{ issue.newsletter.associated_list }}' list in iContact</li>
+        <li>To be uploaded to the website</li>
+    </ul>
+
+</div>
+
+{% include issue.html_email_template %}
+
+<form method="post" action="{% url 'newsletter:publish_issue' issue.id %}" enctype="form-data">
+    {% csrf_token %}
+    <div class="actions">
+        <input type="submit" value="Cancel" name="cancel"/>
+        <input type="submit" value="Yes, Publish" name="publish"/>
+    </div>
+</form>
+
+
+
+{% endblock %}

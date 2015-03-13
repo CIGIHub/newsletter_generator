@@ -1,0 +1,73 @@
+{% load static from staticfiles %}
+{% load paths %}
+
+
+<section class="stories">
+    <h2>{{ category.display_title }}</h2>
+
+    <div id="id_{{ category.code_name }}">
+        <ul class="sortable">
+            {{ formset.non_field_errors }}
+            {{ formset.management_form }}
+            {% for form in formset %}
+                {{ form.media }}
+                <li id="id_{{ category.code_name }}-row"
+                    class="dynamic-form story">
+                    <div class="story-id">{{ form.id }}</div>
+                {% if category.is_headline %}
+                    <div class="story-image-preview">
+                        {% if form.instance.scaled_image %}
+                            <img src="{{ form.instance.scaled_image.url }}"/>
+                        {% else %}
+                            <div class="image-spacer">Upload an image ({{ category.max_image_width }}px by
+                                {{ category.max_image_height }}px)
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="story-image">
+                        <div class="error-message">{{ form.image.errors }}</div>
+                        {{ form.image }}
+                    </div>
+                {% endif %}
+                    <div class="story-title">
+                        <div class="error-message">{{ form.title.errors }}</div>
+                        <div class="label">{{ form.title.label }}:</div>
+                        {{ form.title }}
+                    </div>
+                    <div class="story-link">
+                        <div class="error-message">{{ form.url.errors }}</div>
+                        <div class="label">{{ form.url.label }}: <span>(must be a valid URL including http://)</span>
+                        </div>
+                        {{ form.url }}
+                    </div>
+                    <div class="description">
+                        <div class="error-message">{{ form.description.errors }}</div>
+                        <div class="label">{{ form.description.label }}:</div>
+                        {{ form.description }}
+                    </div>
+                    <div class="story-weight">
+                        <div class="error-message">{{ form.weight.errors }}</div>
+                        <div class="label">{{ form.weight.label }}:</div>
+                        {{ form.weight }}
+                    </div>
+
+                    <div class="delete">
+                        {% if formset.can_delete %}
+                                            
+                            <a id="remove-{{ category.code_name }}-row"
+                               href="javascript:void(0)"
+                               class="delete-story"
+                               data-prefix="{{ category.code_name }}"
+                                    >Delete</a>
+                            {{ form.DELETE }}
+                                            {% endif %}
+                    </div>
+                </li>
+
+            {% endfor %}
+        </ul>
+        <div class="add-story"><a href="javascript:void(0)"
+                                  class="add-story" data-prefix="{{ category.code_name }}">add another story</a>
+        </div>
+    </div>
+</section>

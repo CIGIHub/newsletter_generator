@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load paths %}
+
+{% block content %}
+
+    <h2>Delete Issue</h2>
+    <h3>{{ issue.newsletter }}: {{ issue.issue_date | date:"F Y" }}</h3>
+    <div class="action-prompt">
+        <p>Are you sure you would like to delete the following issue? It can
+            not be restored.</p>
+    </div>
+    {% include issue.html_email_template %}
+
+    <form method="post" action="{% url 'newsletter:delete_issue' issue.id %}"
+          enctype="form-data">
+        {% csrf_token %}
+        <div class="actions">
+            <input type="submit" value="Cancel" name="cancel_delete"/>
+            <input type="submit" value="Yes, Delete" name="delete"/>
+        </div>
+    </form>
+
+
+
+{% endblock %}
