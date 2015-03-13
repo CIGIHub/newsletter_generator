@@ -41,8 +41,10 @@ def get_attribute(template, attribute_name):
     template_attributes = TemplateAttribute.objects.filter(template=template,
                                                            name=attribute_name)
 
-    if len(template_attributes) > 0:
-        return template_attributes[0].value
+    attributes = list(template_attributes)
+
+    if len(attributes) > 0:
+        return attributes[0].value
 
 
 @register.simple_tag
