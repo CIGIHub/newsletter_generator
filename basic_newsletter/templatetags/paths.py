@@ -8,10 +8,19 @@ register = template.Library()
 @register.filter
 def media_url(template, media_name):
     template_media_files = TemplateMediaFile.objects.filter(template=template,
-                                                            name=media_name)
+                                                            name=str(media_name))
 
     if len(template_media_files) > 0:
         return template_media_files[0].image.url
+
+
+@register.filter
+def get_attribute(template, attribute_name):
+    template_attributes = TemplateAttribute.objects.filter(template=template,
+                                                           name=str(attribute_name))
+
+    if len(template_attributes) > 0:
+        return template_attributes[0].value
 
 
 @register.filter
@@ -34,17 +43,6 @@ def tweetify(text):
         return tweetified_text
     else:
         return text
-
-
-@register.filter
-def get_attribute(template, attribute_name):
-    template_attributes = TemplateAttribute.objects.filter(template=template,
-                                                           name=attribute_name)
-
-    attributes = list(template_attributes)
-
-    if len(attributes) > 0:
-        return attributes[0].value
 
 
 @register.simple_tag
