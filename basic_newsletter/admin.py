@@ -22,4 +22,4 @@ admin.site.register(FeatureType)
 admin.site.register(NewsItem)
 admin.site.register(Template, TemplateAdmin)
 admin.site.register(TemplateMediaFile)
-
+admin.site.register(TemplateAttribute)
