@@ -67,15 +67,20 @@ body, table, td, p, a, li, blockquote {
     body{width:100% !important; min-width:100% !important;} /* Force iOS Mail to render the email at full width. */
 
     /*////// GENERAL STYLES //////*/
-    h2{font-size:26px !important;}
-    h3, h3 a{font-size:26px !important;}
+    h2{font-size:14px !important;}
+    h3, h3 a{font-size:20px !important;}
 
-    img[id="headlineImage"]{height:auto !important; max-width:460px !important; width:100% !important;}
+    td[class="headlineTitle"] h3 a{font-size:22px !important;}
+
+    img[class="headlineImage"]{height:auto !important; max-width:460px !important; width:100% !important;}
 
     img[id="headerLogoImage"]{height:auto !important; max-width:130px !important; width: 100% !important;}
-    span[class="headerLogoText"]{font-size:30px !important;}
+    span[class="headerLogoText"]{font-size:26px !important;}
     td[id="headerLogoCell"]{width: 45% !important;}
     td[id="headerTextCell"]{padding: 8px 0 10px 0 !important; width: 55% !important;}
 
     span[class="social-link-text"]{font-size: 10px !important;}
+    table[class="dividerTable"]{width: 100% !important;}
+    td[class="headlineImageCell"], td[class="headlineTitle"], td[class="contentHeadline"]{ padding: 5px 0 0 0 !important; }
+    td[class="contentByLine"], td[class="contentText"], td[class="headlineText"]{ padding: 5px 0 5px 0 !important; }
 }
