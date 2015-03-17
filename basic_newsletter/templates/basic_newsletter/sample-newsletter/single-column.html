@@ -19,7 +19,7 @@
                 <td align="center" valign="top" id="bodyCell" style="{% base_styles 'td' %} padding: 20px 0 20px 0;">
                     <table border="0" cellpadding="0" cellspacing="0" width="{{ issue.resolved_template|get_attribute:"default_width" }}" style="{% base_styles 'table' %} width: {{ issue.resolved_template|get_attribute:"default_width" }}px; background-color: #ffffff;" id="emailContainer">
                         <tr>
-                            <td align="center" valign="top" style="{% base_styles 'td' %} padding: 0 0 0 0; text-align: left;" id="viewOnWebContainer">
+                            <td align="center" valign="top" style="{% base_styles 'td' %} padding: 0 0 0 0; text-align: left; background-color: #edf1f1;" id="viewOnWebContainer">
                                 {% include 'basic_newsletter/sample-newsletter/single-column/view-on-web.html' with template=issue.resolved_template %}
                             </td>
                         </tr>
