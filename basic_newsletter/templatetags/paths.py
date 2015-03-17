@@ -37,7 +37,7 @@ def tweetify(text):
         tweetified_text = text[:twitter_handle.start()+1] + \
                           "<a href='https://twitter.com/" + \
                           twitter_handle.group('handle') + \
-                          "' style='color:#5dd7fc'>" + \
+                          "' style='color:#01a0c7; text-decoration:none;'>" + \
                           twitter_handle.group()[1:-1] + \
                           "</a>" + tweetify(text[twitter_handle.end()-1:])
         return tweetified_text
