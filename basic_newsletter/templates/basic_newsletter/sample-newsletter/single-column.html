@@ -10,11 +10,19 @@
 </style>
 </head>
 <body style="{% base_styles 'body' %} background-color: #edf1f1;">
+    <div style="font-size: 0; line-height: 0; width: 0; height: 0; display: none; overflow: hidden;">
+        {% include 'basic_newsletter/sample-newsletter/single-column/description.html' %}
+    </div>
     <center>
         <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"  style="{% base_styles 'table' %} {% base_styles '#bodyTable' %}" id="bodyTable">
             <tr>
                 <td align="center" valign="top" id="bodyCell" style="{% base_styles 'td' %} padding: 20px 0 20px 0;">
                     <table border="0" cellpadding="0" cellspacing="0" width="{{ issue.resolved_template|get_attribute:"default_width" }}" style="{% base_styles 'table' %} width: {{ issue.resolved_template|get_attribute:"default_width" }}px; background-color: #ffffff;" id="emailContainer">
+                        <tr>
+                            <td align="center" valign="top" style="{% base_styles 'td' %} padding: 0 0 0 0; text-align: left;" id="viewOnWebContainer">
+                                {% include 'basic_newsletter/sample-newsletter/single-column/view-on-web.html' with template=issue.resolved_template %}
+                            </td>
+                        </tr>
                         <tr>
                             <td align="center" valign="top" style="{% base_styles 'td' %} padding: 0 0 10px 0;" id="headerContainer">
                                 {% include 'basic_newsletter/sample-newsletter/single-column/header.html' with template=issue.resolved_template %}
