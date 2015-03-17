@@ -67,7 +67,13 @@
                             {% endif %}
                             <tr>
                                 <td align="left" valign="top"
-                                    class="contentText" style="{% base_styles 'td' %} padding: 5px 0px 5px 10px; font-size: {{ template|get_attribute:"body_font_size" }}; font-family: {{ template|get_attribute:"body_font" }}; color: {{ template|get_attribute:"body_font_color" }};">
+                                    class="contentText" style="{% base_styles 'td' %}
+                                        padding: 5px 0 10px 10px;
+                                        font-size: {{ template|get_attribute:"body_font_size" }};
+                                        font-family: {{ template|get_attribute:"body_font" }};
+                                        line-height: 125%;
+                                        color: {{ template|get_attribute:"body_font_color" }};"
+                                        >
                                     {{ story.description|safe }}
                                 </td>
                             </tr>
