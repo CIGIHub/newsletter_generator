@@ -60,6 +60,7 @@ body, table, td, p, a, li, blockquote {
 
 @media only screen and (min-width: 481px){
     span[class="headerLogoText"]{font-size: 27px !important;}
+    img[id="headerLogoImage"]{font-size: 30px !important;}
 }
 
 @media only screen and (max-width: 480px){
@@ -77,12 +78,7 @@ body, table, td, p, a, li, blockquote {
     td[class="headlineTitle"] h3 a{font-size:22px !important;}
 
     img[class="headlineImage"]{height:auto !important; max-width:460px !important; width:100% !important;}
-
-{#    img[id="headerLogoImage"]{height:auto !important; max-width:130px !important; width: 100% !important;}#}
-{#    span[class="headerLogoText"]{font-size:26px !important;}#}
-{#    td[id="headerLogoCell"]{width: 45% !important;}#}
-{#    td[id="headerTextCell"]{padding: 8px 0 10px 0 !important; width: 55% !important;}#}
-
+    img[id="headerLogoImage"]{font-size: 30px !important;}
     span[class="social-link-text"]{font-size: 10px !important;}
     table[class="dividerTable"]{width: 100% !important;}
     td[class="headlineImageCell"], td[class="headlineTitle"], td[class="contentHeadline"]{ padding: 5px 0 0 0 !important; }
