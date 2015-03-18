@@ -65,6 +65,21 @@ class Newsletter(models.Model):
         return '%s' % self.title
 
 
+@python_2_unicode_compatible
+class GoogleAnalyticsCampaign(models.Model):
+    source = models.CharField(max_length=1024)
+    medium = models.CharField(max_length=1024)
+    campaign = models.CharField(max_length=1024)
+
+    newsletter = models.ForeignKey("Newsletter")
+
+    @property
+    def link_tracking(self):
+        return "?utm_source={}&utm_medium={}&utm_campaign={}".format(self.source,
+                                                                     self.medium,
+                                                                     self.campaign)
+
+
 # Specific newsletter issue for a defined newsletter,
 # such as December 2013, CIGI Worldwide
 # Each issue can be linked to one newsletter type
