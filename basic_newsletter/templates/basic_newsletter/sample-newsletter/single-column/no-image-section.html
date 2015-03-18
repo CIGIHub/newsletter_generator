@@ -3,9 +3,8 @@
 {% with stories=issue|get_stories:category %}
     {% if stories %}
         <table border="0" cellpadding="0" cellspacing="0"
-               width="{{ template|get_attribute:"default_inner_width" }}"
                class="contentBlock"
-               style="{% base_styles 'table' %}">
+               style="{% base_styles 'table' %} max-width:{{ template|get_attribute:"default_inner_width" }}px; width:100%;">
             <tr>
                 <td align="left" valign="top" class="contentSectionHeader" style="{% base_styles 'td' %}">
                     <h2 style="font-family: {{ template|get_attribute:"section_header_font" }};
