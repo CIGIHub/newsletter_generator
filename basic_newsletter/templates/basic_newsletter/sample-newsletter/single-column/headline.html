@@ -43,7 +43,7 @@
                                style="{% base_styles 'a' %}"><img
                                     src="{{ story.image_path }}"
                                     width="{{ story.image_width }}"
-                                    height="{{ story.image_height }}"
+{#                                    height="{{ story.image_height }}"#}
                                     border="0"
                                     alt="feature image"
                                     class="headlineImage"
@@ -56,7 +56,8 @@
                                             text-align: left;
                                             text-decoration: none;
                                             display: block;
-                                            max-width: 100%;"></a>
+                                            max-width: 100%;
+                                            height: auto;"></a>
                         </td>
                     </tr>
                     <tr>
