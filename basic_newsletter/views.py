@@ -234,6 +234,18 @@ def preview_issue_html(request, issue_id):
 
 
 @login_required
+def preview_issue_text(request, issue_id):
+    issue = Issue.objects.get(id=issue_id)
+    template = issue.plain_text_email_template
+
+    context = dict(
+        issue=issue,
+    )
+
+    return render(request, template, context)
+
+
+@login_required
 def delete_issue(request, issue_id, template='basic_newsletter/delete_issue.html'):
     issue = Issue.objects.get(id=issue_id)
 
