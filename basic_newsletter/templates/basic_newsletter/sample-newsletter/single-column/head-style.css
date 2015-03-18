@@ -58,6 +58,10 @@ body, table, td, p, a, li, blockquote {
     -ms-text-size-adjust: 100%;
 }
 
+@media only screen and (min-width: 481px){
+    span[class="headerLogoText"]{font-size: 27px !important;}
+}
+
 @media only screen and (max-width: 480px){
     /*////// RESET STYLES //////*/
     td[class="headlineContainer"], td[class="nonHeadlineContainer"]{padding-right:10px !important; padding-left:10px !important;}
