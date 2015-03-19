@@ -83,7 +83,7 @@
                                                 width="40%"
                                                 style="{% base_styles 'td' %} padding: 0 5px 0 0;">
                                                 <a
-                                                        href="https://www.cigionline.org/blogs"
+                                                        href="https://www.cigionline.org/blogs/{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                                                         style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};"><img
                                                         src="{{ issue.resolved_template|media_url:'blogs.png' }}"
                                                         alt="CIGI"
@@ -93,7 +93,7 @@
                                                 width="60%"
                                                 style="{% base_styles 'td' %}">
                                                 <a
-                                                        href="https://www.cigionline.org/blogs"
+                                                        href="https://www.cigionline.org/blogs/{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                                                         style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};"><span
                                                         class="social-link-text"> BLOGS</span></a>
                                             </td>
@@ -109,7 +109,7 @@
                 <tr>
                     <td align="center" valign="top" width="100%"
                         style="{% base_styles 'td' %} padding: 10px 0 30px 0;">
-                        <a href="https://www.cigionline.org"
+                        <a href="https://www.cigionline.org/{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                            style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};">WWW.CIGIONLINE.ORG</a>
                     </td>
                 </tr>

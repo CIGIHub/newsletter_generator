@@ -49,7 +49,7 @@
                                             text-align: left;
                                             text-decoration: none;
                                             ">
-                                        <a href="{{ story.url }}"
+                                        <a href="{{ story.url }}{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                                            style="{% base_styles 'a' %}
                                                    color: {{ template|get_attribute:"heading_font_color" }};
                                                    font-size: {{ template|get_attribute:"heading_font_size" }};
@@ -76,7 +76,7 @@
                                         line-height: 125%;
                                         color: {{ template|get_attribute:"body_font_color" }};"
                                         >
-                                    {{ story.description|safe }}
+                                    {{ story.description|tweetify|safe }}
                                 </td>
                             </tr>
                         </table>

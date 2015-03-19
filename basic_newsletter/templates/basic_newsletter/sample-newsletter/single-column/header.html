@@ -9,7 +9,7 @@
                         width="100%" align="center" valign="middle"
                         class="headerLogoImage" id="headerLogoCell"
                         style="{% base_styles 'td' %} padding: 20px 0 20px 0;">
-                        <a href="https://www.cigionline.org/"
+                        <a href="https://www.cigionline.org/{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                            target="_blank" style="{% base_styles 'a' %}"><img alt="CIGI Worldwide"
                                                 src="{{ issue.resolved_template|media_url:'cigiworldwidelogo.png' }}"
                                                 width="332" height="50"

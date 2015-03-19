@@ -140,6 +140,15 @@ class Issue(models.Model):
         else:
             return self.newsletter.template.subject_filepath
 
+    @property
+    def link_tracking(self):
+        ga_campaigns = self.newsletter.googleanalyticscampaign_set.all()
+
+        if len(ga_campaigns) > 0:
+            return ga_campaigns[0].link_tracking
+
+        return ""
+
     def is_complete(self):
         errors = []
         # TODO: use template details to do this generically
@@ -182,7 +191,6 @@ class Issue(models.Model):
         drupal_create_script = ""
         if self.newsletter.drupal_create_script:
             with tempfile.NamedTemporaryFile(delete=False) as f:
-                # import pdb; pdb.set_trace()
                 create_script = render_to_string(
                     self.newsletter.drupal_create_script,
                     dict(issue=self))
@@ -193,7 +201,7 @@ class Issue(models.Model):
 
         if self.newsletter.upload_script:
             with tempfile.NamedTemporaryFile(delete=False) as f:
-                f.write(self.html.encode('utf8'))
+                f.write(self.html_with_tracking.encode('utf8'))
                 html_file_path = f.name
 
             files_to_remove.append(html_file_path)
@@ -216,7 +224,7 @@ class Issue(models.Model):
 
         if self.newsletter.upload_script:
             with tempfile.NamedTemporaryFile(delete=False) as f:
-                f.write(self.html.encode('utf8'))
+                f.write(self.html_with_tracking.encode('utf8'))
                 html_file_path = f.name
 
             files_to_remove.append(html_file_path)

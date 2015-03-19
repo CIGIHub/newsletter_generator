@@ -228,6 +228,7 @@ def preview_issue_html(request, issue_id):
 
     context = dict(
         issue=issue,
+        tracking=False,
     )
 
     return render(request, template, context)

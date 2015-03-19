@@ -6,18 +6,18 @@
 {{ category.display_title|striptags }}
 --------------------------------------
     {% for newsitem in issue|get_stories:category %}
-    {{ newsitem.title|striptags }}
+    {{ newsitem.title|safe|striptags }}
     {{ newsitem.url }}
-    {{ newsitem.description|striptags }}
+    {{ newsitem.description|safe|striptags }}
     {% endfor %}
 {% endfor %}
 {% for category in issue.non_headline_categories %}
 {{ category.display_title|striptags }}
 --------------------------------------
      {% for newsitem in issue|get_stories:category %}
-    {{ newsitem.title|striptags }}
+    {{ newsitem.title|safe|striptags }}
     {{ newsitem.url }}
-    {{ newsitem.description|striptags }}
+    {{ newsitem.description|safe|striptags }}
     {% endfor %}
 {% endfor %}
 

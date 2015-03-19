@@ -40,7 +40,7 @@
                     <tr>
                         <td align="left" valign="top" class="headlineImageCell"
                             style="{% base_styles 'td' %} padding: 5px 0 0 10px;">
-                            <a href="{{ story.url }}"
+                            <a href="{{ story.url }}{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                                target="_blank"
                                style="{% base_styles 'a' %}"><img
                                     src="{{ story.image_path }}"
@@ -74,7 +74,7 @@
                                     line-height: 115%;
                                     text-align: left;
                                     text-decoration: none;"><a
-                                    href="{{ story.url }}"
+                                    href="{{ story.url }}{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                                     style="{% base_styles 'a' %}
                                             color: {{ template|get_attribute:"heading_font_color" }};
                                             font-size: {{ template|get_attribute:"headline_heading_font_size" }};
@@ -100,7 +100,7 @@
                                     font-family: {{ template|get_attribute:"body_font" }};
                                     line-height: 125%;
                                     color: {{ template|get_attribute:"body_font_color" }};">
-                            {{ story.description|safe }}
+                            {{ story.description|tweetify|safe }}
                         </td>
                     </tr>
                 </table>
