@@ -20,7 +20,12 @@ class TemplateAdmin(admin.ModelAdmin):
     inlines = (TemplateMediaFileInline, TemplateAttributeInline, )
 
 
-admin.site.register(Newsletter, GoogleAnalyticsInline)
+class NewsletterAdmin(admin.ModelAdmin):
+    model = Newsletter
+    inlines = (GoogleAnalyticsInline, )
+
+
+admin.site.register(Newsletter, NewsletterAdmin)
 admin.site.register(Issue)
 admin.site.register(FeatureType)
 admin.site.register(NewsItem)

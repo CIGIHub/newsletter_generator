@@ -254,14 +254,31 @@ class Issue(models.Model):
     @property
     def html(self):
         html_body = render_to_string(self.html_email_template,
-                                     dict(issue=self))
+                                     dict(issue=self, tracking=False))
 
         return html_body
+
+
+    @property
+    def html_with_tracking(self):
+        html_body = render_to_string(self.html_email_template,
+                                     dict(issue=self, tracking=True))
+
+        return html_body
+
 
     @property
     def text(self):
         txt_body = render_to_string(self.plain_text_email_template,
-                                    dict(issue=self))
+                                    dict(issue=self, tracking=False))
+
+        return txt_body
+
+
+    @property
+    def text_with_tracking(self):
+        txt_body = render_to_string(self.plain_text_email_template,
+                                    dict(issue=self, tracking=True))
 
         return txt_body
 
