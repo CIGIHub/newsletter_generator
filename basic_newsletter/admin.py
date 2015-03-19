@@ -1,7 +1,16 @@
+from django import forms
+from django.forms import models
 from django.contrib import admin
 from basic_newsletter.models import Newsletter, Issue, FeatureType, NewsItem, \
     Template, TemplateMediaFile, TemplateAttribute, GoogleAnalyticsCampaign
 
+
+class NewsItemForm(models.ModelForm):
+    title = forms.CharField(widget=forms.TextInput(attrs={'class': 'title'}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'description'}))
+
+    class Meta:
+        model = NewsItem
 
 class TemplateMediaFileInline(admin.TabularInline):
     model = TemplateMediaFile
@@ -17,6 +26,7 @@ class GoogleAnalyticsInline(admin.TabularInline):
 
 class NewsItemInline(admin.StackedInline):
     model = NewsItem
+    form = NewsItemForm
 
 
 class TemplateAdmin(admin.ModelAdmin):
