@@ -17,7 +17,7 @@ except ImportError:
 
 class ImageManipulator():
 
-    def __init__(self, format="PNG", extension="png", quality=75):
+    def __init__(self, format="JPEG", extension="jpg", quality=75):
         self.format = format
         self.extension = extension
         self.quality = quality
