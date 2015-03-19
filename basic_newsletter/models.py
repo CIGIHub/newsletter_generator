@@ -79,6 +79,8 @@ class GoogleAnalyticsCampaign(models.Model):
                                                                      self.medium,
                                                                      self.campaign)
 
+    def __str__(self):
+        return '{} - {} - {}'.format(self.source, self.medium, self.campaign)
 
 # Specific newsletter issue for a defined newsletter,
 # such as December 2013, CIGI Worldwide
