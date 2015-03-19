@@ -1,8 +1,27 @@
 {% load paths %}
-<a
-        href="https://www.cigionline.org/sites/default/files/cigi-worldwide/cigiworldwide_{{ issue.issue_date|date:"F_j_Y"|lower }}.html{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
-        style="text-transform: uppercase; text-decoration: none;
-            font-family: {{ template|get_attribute:"section_header_font" }};
-            color: {{ template|get_attribute:"heading_font_color" }};
-            font-size: 11px;
+<table border="0" cellpadding="0" cellspacing="0"
+       width="100%" style="{% base_styles 'table' %} padding: 0;">
+    <tr>
+        <td align="left" width="50%" valign="bottom"
+            style="{% base_styles 'td' %} padding: 0; text-align: left; background-color: #edf1f1;">
+            <a
+                    href="https://www.cigionline.org/sites/default/files/cigi-worldwide/cigiworldwide_{{ issue.issue_date|date:"F_j_Y"|lower }}.html
+                            {% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
+                    style="text-transform: uppercase; text-decoration: none;
+                            font-family: {{ template|get_attribute:"section_header_font" }};
+                            color: {{ template|get_attribute:"heading_font_color" }};
+                            font-size: 11px;
                             ">View this issue in a browser</a>
+        </td>
+        <td align="right" width="25%" valign="bottom"
+            style="{% base_styles 'td' %} padding: 0; text-align: right; background-color: #edf1f1;
+                    text-transform: uppercase; text-decoration: none;
+                    font-family: {{ issue.resolved_template|get_attribute:"section_header_font" }};
+                    color: {{ issue.resolved_template|get_attribute:"body_font_color" }};
+                    font-size: 11px;">
+            {{ issue.issue_date|date:"F j, Y" }}
+        </td>
+    </tr>
+</table>
+
+
