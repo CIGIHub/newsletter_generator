@@ -2,6 +2,9 @@
 
 {% with stories=issue|get_stories:category %}
     {% if stories %}
+        <!--[if gte mso 9]>
+         <table><tr><td width="{{ issue.resolved_template|get_attribute:"default_inner_width" }}">
+        <![endif]-->
         <table border="0" cellpadding="0" cellspacing="0"
                class="contentBlock"
                style="{% base_styles 'table' %} max-width:{{ template|get_attribute:"default_inner_width" }}px; width:100%;">
@@ -83,5 +86,8 @@
             {% endfor %}
 
         </table>
+        <!--[if gte mso 9]>
+         </td></tr></table>
+        <![endif]-->
     {% endif %}
 {% endwith %}
