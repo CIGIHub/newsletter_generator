@@ -3,17 +3,21 @@
 {{ issue.newsletter.title }}
 
 {% for category in issue.headline_categories %}
+{{ category.display_title|striptags }}
+--------------------------------------
     {% for newsitem in issue|get_stories:category %}
-        {{ newsitem.title }}
-        {{ newsitem.url }}
-        {{ newsitem.description }}
+    {{ newsitem.title|striptags }}
+    {{ newsitem.url }}
+    {{ newsitem.description|striptags }}
     {% endfor %}
 {% endfor %}
 {% for category in issue.non_headline_categories %}
+{{ category.display_title|striptags }}
+--------------------------------------
      {% for newsitem in issue|get_stories:category %}
-        {{ newsitem.title }}
-        {{ newsitem.url }}
-        {{ newsitem.description }}
+    {{ newsitem.title|striptags }}
+    {{ newsitem.url }}
+    {{ newsitem.description|striptags }}
     {% endfor %}
 {% endfor %}
 
