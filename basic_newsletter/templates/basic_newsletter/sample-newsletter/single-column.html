@@ -14,7 +14,7 @@
         {% include 'basic_newsletter/sample-newsletter/single-column/description.html' %}
     </div>
     <center>
-        <!--[if mso]>
+        <!--[if gte mso 9]>
          <table><tr><td width="{{ issue.resolved_template|get_attribute:"default_width" }}">
         <![endif]-->
         <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"  style="{% base_styles 'table' %} {% base_styles '#bodyTable' %} max-width: {{ issue.resolved_template|get_attribute:"default_width" }}px; width:100%;" id="bodyTable">
@@ -55,7 +55,7 @@
                 </td>
             </tr>
         </table>
-        <!--[if mso]>
+        <!--[if gte mso 9]>
          </td></tr></table>
          </center>
         <![endif]-->
