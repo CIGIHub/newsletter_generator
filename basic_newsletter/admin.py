@@ -15,6 +15,10 @@ class GoogleAnalyticsInline(admin.TabularInline):
     model = GoogleAnalyticsCampaign
 
 
+class NewsItemInline(admin.StackedInline):
+    model = NewsItem
+
+
 class TemplateAdmin(admin.ModelAdmin):
     model = Template
     inlines = (TemplateMediaFileInline, TemplateAttributeInline, )
@@ -25,8 +29,13 @@ class NewsletterAdmin(admin.ModelAdmin):
     inlines = (GoogleAnalyticsInline, )
 
 
+class IssueAdmin(admin.ModelAdmin):
+    model = Issue
+    inlines = (NewsItemInline, )
+
+
 admin.site.register(Newsletter, NewsletterAdmin)
-admin.site.register(Issue)
+admin.site.register(Issue, IssueAdmin)
 admin.site.register(FeatureType)
 admin.site.register(NewsItem)
 admin.site.register(Template, TemplateAdmin)
