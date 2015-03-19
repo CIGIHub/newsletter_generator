@@ -12,6 +12,7 @@ class NewsItemForm(models.ModelForm):
     class Meta:
         model = NewsItem
 
+
 class TemplateMediaFileInline(admin.TabularInline):
     model = TemplateMediaFile
 
@@ -25,6 +26,11 @@ class GoogleAnalyticsInline(admin.TabularInline):
 
 
 class NewsItemInline(admin.StackedInline):
+    model = NewsItem
+    form = NewsItemForm
+
+
+class NewsItemAdmin(admin.ModelAdmin):
     model = NewsItem
     form = NewsItemForm
 
@@ -47,7 +53,7 @@ class IssueAdmin(admin.ModelAdmin):
 admin.site.register(Newsletter, NewsletterAdmin)
 admin.site.register(Issue, IssueAdmin)
 admin.site.register(FeatureType)
-admin.site.register(NewsItem)
+admin.site.register(NewsItem, NewsItemAdmin)
 admin.site.register(Template, TemplateAdmin)
 admin.site.register(TemplateMediaFile)
 admin.site.register(TemplateAttribute)
