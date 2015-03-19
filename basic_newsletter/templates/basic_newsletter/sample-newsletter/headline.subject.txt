@@ -2,7 +2,7 @@
 {% with category=issue.headline_categories.0 %}
 {% with stories=issue|get_stories:category %}
 {% with story=stories.0 %}
-    {{ story.title }}
+    {{ issue.newsletter.title }}: {{ story.title }}
 {% endwith %}
 {% endwith %}
 {% endwith %}
