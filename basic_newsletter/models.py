@@ -187,42 +187,20 @@ class Issue(models.Model):
         msg.attach_alternative(html_content, "text/html")
         msg.send()
 
-    def upload(self):
+    def upload(self, re_upload=False):
         files_to_remove = []
 
         drupal_create_script = ""
-        if self.newsletter.drupal_create_script:
-            with tempfile.NamedTemporaryFile(delete=False) as f:
-                create_script = render_to_string(
-                    self.newsletter.drupal_create_script,
-                    dict(issue=self))
-                f.write(create_script)
-                drupal_create_script = f.name
+        if not re_upload:
+            if self.newsletter.drupal_create_script:
+                with tempfile.NamedTemporaryFile(delete=False) as f:
+                    create_script = render_to_string(
+                        self.newsletter.drupal_create_script,
+                        dict(issue=self))
+                    f.write(create_script)
+                    drupal_create_script = f.name
 
-            files_to_remove.append(drupal_create_script)
-
-        if self.newsletter.upload_script:
-            with tempfile.NamedTemporaryFile(delete=False) as f:
-                f.write(self.html_with_tracking.encode('utf8'))
-                html_file_path = f.name
-
-            files_to_remove.append(html_file_path)
-
-            name = self.html_file_name
-            script_name = self.newsletter.upload_script
-            process = subprocess.Popen([script_name,
-                                        name,
-                                        html_file_path,
-                                        drupal_create_script])
-            process.wait()
-
-        for file_path in files_to_remove:
-            os.remove(file_path)
-
-    def reupload(self):
-        files_to_remove = []
-
-        drupal_create_script = ""
+                files_to_remove.append(drupal_create_script)
 
         if self.newsletter.upload_script:
             with tempfile.NamedTemporaryFile(delete=False) as f:
@@ -244,15 +222,15 @@ class Issue(models.Model):
 
     @property
     def html_file_name(self):
-        filename = "%s_%s.html" % (self.newsletter.title,
-                                   self.published_date.strftime("%B_%Y"))
+        filename = "{}_{}.html".format(self.newsletter.title,
+                                       self.issue_date.strftime("%B_%d_%Y")
+                                      ).lower()
 
         keep_characters = ('.', '_')
         filename = "".join(c for c in filename
                            if c.isalnum() or c in keep_characters)
 
         return filename.lower().rstrip()
-
 
     @property
     def subject(self):
@@ -301,6 +279,11 @@ class Issue(models.Model):
         stories = NewsItem.objects.filter(issue=self,
                                           feature_type=category
         ).order_by('weight')
+        return stories
+
+    def get_top_stories(self, count):
+        stories = NewsItem.objects.filter(issue=self
+        ).order_by('feature_type__weight', 'weight')[:count]
         return stories
 
     def __str__(self):

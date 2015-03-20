@@ -15,8 +15,12 @@
 <div id="newsletter-form">
 <form method="post" action="{% url 'newsletter:edit_issue' issue.id %}" enctype="multipart/form-data">
     <div class="actions">
+        {% if issue.published_state == 'Published' %}
+        <input type="submit" name="save_published" value="Save"/>
+        {% else %}
         <input type="submit" name="draft" value="Save Draft"/>
         <input type="submit" name="preview" value="Preview"/>
+        {% endif %}
     </div>
     {% csrf_token %}
         {% for category, formset in headline_formsets %}

@@ -315,6 +315,6 @@ def publish_issue(request, issue_id, template="basic_newsletter/publish_issue.ht
 @login_required
 def reupload_issue(request, issue_id):
     issue = Issue.objects.get(id=issue_id)
-    issue.reupload()
+    issue.upload(re_upload=True)
 
     return redirect('newsletter:home')

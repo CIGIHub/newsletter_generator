@@ -1,6 +1,6 @@
 {% load paths %}
 <a
-                    href="https://www.cigionline.org/sites/default/files/cigi-worldwide/cigiworldwide_{{ issue.issue_date|date:"F_j_Y"|lower }}.html
+                    href="https://www.cigionline.org/sites/default/files/cigi-worldwide/{{ issue.html_file_name }}
                             {% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                     style="text-transform: uppercase; text-decoration: none;
                             font-family: {{ template|get_attribute:"section_header_font" }};

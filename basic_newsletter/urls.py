@@ -10,6 +10,6 @@ urlpatterns = patterns('',
    url(r'^delete/issue/(?P<issue_id>\d+)/$', 'basic_newsletter.views.delete_issue', name='delete_issue'),
    url(r'^test/issue/(?P<issue_id>\d+)/$', 'basic_newsletter.views.test_issue', name='test_issue'),
    url(r'^publish/issue/(?P<issue_id>\d+)/$', 'basic_newsletter.views.publish_issue', name='publish_issue'),
-   url(r'^edit_for_web/issue/(?P<issue_id>\d+)/$', 'basic_newsletter.views.edit_issue', {'template': 'issue_edit.html'}, name='edit_issue_for_web'),
+   url(r'^edit_for_web/issue/(?P<issue_id>\d+)/$', 'basic_newsletter.views.edit_issue', {'template': 'basic_newsletter/issue_edit.html'}, name='edit_issue_for_web'),
    url(r'^republish/issue/(?P<issue_id>\d+)/$', 'basic_newsletter.views.reupload_issue', name='reupload_issue'),
 )

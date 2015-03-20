@@ -25,6 +25,11 @@ def get_attribute(template, attribute_name):
 
 
 @register.filter
+def top_stories(issue, count):
+    return issue.get_top_stories(count)
+
+
+@register.filter
 def get_stories(issue, category):
     stories = issue.get_stories(category).all()
     return stories
