@@ -1,4 +1,5 @@
 from django import template
+from django.utils.safestring import mark_safe
 from basic_newsletter.models import TemplateMediaFile, TemplateAttribute
 import re
 
@@ -20,7 +21,7 @@ def get_attribute(template, attribute_name):
                                                            name=str(attribute_name))
 
     if len(template_attributes) > 0:
-        return template_attributes[0].value
+        return mark_safe(template_attributes[0].value)
 
 
 @register.filter
