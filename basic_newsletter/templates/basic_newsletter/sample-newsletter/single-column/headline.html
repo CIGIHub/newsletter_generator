@@ -92,6 +92,7 @@
                             </td>
                         </tr>
                     {% endif %}
+                    {% if story.description %}
                     <tr>
                         <td align="left" valign="top" class="headlineText"
                             style="{% base_styles 'td' %}
@@ -103,6 +104,7 @@
                             {{ story.description|tweetify|safe }}
                         </td>
                     </tr>
+                    {% endif %}
                 </table>
             {% endfor %}
         </td>
