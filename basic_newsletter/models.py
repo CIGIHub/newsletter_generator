@@ -339,10 +339,10 @@ class FeatureType(models.Model):
 # selected newsletter
 @python_2_unicode_compatible
 class NewsItem(models.Model):
-    title = RichTextField(max_length=1024, default="", blank=True)
-    url = models.URLField("Link to story", default="", blank=True)
-    description = RichTextField(default="", blank=True)
-    by_line = models.CharField(max_length=1024, default="", blank=True)
+    title = RichTextField(max_length=1024, default="", blank=True, null=True)
+    url = models.URLField("Link to story", default="", blank=True, null=True)
+    description = RichTextField(default="", blank=True, null=True)
+    by_line = models.CharField(max_length=1024, default="", blank=True, null=True)
     image = models.ImageField(upload_to=get_upload_folder, null=True,
                               blank=True)
     scaled_image = models.ImageField(upload_to=get_upload_folder, null=True,
