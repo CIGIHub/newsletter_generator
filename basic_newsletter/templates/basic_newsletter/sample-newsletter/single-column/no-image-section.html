@@ -1,7 +1,4 @@
 {% load paths %}
-
-{% with stories=issue|get_stories:category %}
-    {% if stories %}
         <!--[if gte mso 9]>
          <table><tr><td width="{{ issue.resolved_template|get_attribute:"default_inner_width" }}">
         <![endif]-->
@@ -91,5 +88,3 @@
         <!--[if gte mso 9]>
          </td></tr></table>
         <![endif]-->
-    {% endif %}
-{% endwith %}
