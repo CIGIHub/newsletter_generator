@@ -7,7 +7,7 @@ from basic_newsletter.models import Newsletter, Issue, FeatureType, NewsItem, \
 
 class NewsItemForm(models.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'class': 'title'}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'description'}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'description'}), required=False)
 
     class Meta:
         model = NewsItem
