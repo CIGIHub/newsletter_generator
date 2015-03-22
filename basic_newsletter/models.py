@@ -82,6 +82,7 @@ class GoogleAnalyticsCampaign(models.Model):
     def __str__(self):
         return '{} - {} - {}'.format(self.source, self.medium, self.campaign)
 
+
 # Specific newsletter issue for a defined newsletter,
 # such as December 2013, CIGI Worldwide
 # Each issue can be linked to one newsletter type
@@ -197,7 +198,7 @@ class Issue(models.Model):
                     create_script = render_to_string(
                         self.newsletter.drupal_create_script,
                         dict(issue=self))
-                    f.write(create_script)
+                    f.write(create_script.encode('utf8'))
                     drupal_create_script = f.name
 
                 files_to_remove.append(drupal_create_script)
