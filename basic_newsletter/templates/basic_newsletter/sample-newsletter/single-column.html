@@ -59,6 +59,11 @@
                                 {% include 'basic_newsletter/sample-newsletter/single-column/footer.html' with template=issue.resolved_template %}
                             </td>
                         </tr>
+                        <tr>
+                            <td  align="center" valign="top" style="{% base_styles 'td' %} padding: 20px 0 20px 0; text-align: center; background-color: #edf1f1;" id="subscribeContainer">
+                                {% include 'basic_newsletter/sample-newsletter/single-column/subscribe.html' with template=issue.resolved_template %}
+                            </td>
+                        </tr>
                     </table>
                 </td>
             </tr>
