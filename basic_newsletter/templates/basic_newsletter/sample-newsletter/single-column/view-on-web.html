@@ -1,7 +1,6 @@
-{% load paths %}
+{% load paths %}{% if not tracking %}
 <a
-                    href="https://www.cigionline.org/sites/default/files/cigi-worldwide/{{ issue.html_file_name }}
-                            {% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
+                    href="https://www.cigionline.org/sites/default/files/cigi-worldwide/{{ issue.html_file_name }}"
                     style="text-transform: uppercase; text-decoration: none;
                             font-family: {{ template|get_attribute:"section_header_font" }};
                             color: {{ template|get_attribute:"heading_font_color" }};
@@ -9,6 +8,7 @@
                             ">View this issue in a browser</a><span style="text-transform: uppercase; text-decoration: none;
                             font-family: {{ template|get_attribute:"section_header_font" }};
                             color: {{ template|get_attribute:"body_font_color" }};
-                            font-size: 11px;"> / {{ issue.issue_date|date:"F j, Y" }}</span>
-
-
+                            font-size: 11px;"> / {% else %}<span style="text-transform: uppercase; text-decoration: none;
+                            font-family: {{ template|get_attribute:"section_header_font" }};
+                            color: {{ template|get_attribute:"body_font_color" }};
+                            font-size: 11px;">{% endif %}{{ issue.issue_date|date:"F j, Y" }}</span>
