@@ -81,7 +81,7 @@
                                             font-weight: 600;
                                             line-height: 115%;
                                             text-align: left;">{{ story.title|safe }}</a>
-                            </h3>
+                            </h3>{% if clicks %}<div class="click-count">{{ story.clicks }}</div>{% endif %}
                         </td>
                     </tr>
                     {% if story.by_line %}
