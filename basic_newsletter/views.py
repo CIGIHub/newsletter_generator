@@ -229,6 +229,7 @@ def preview_issue_html(request, issue_id):
     context = dict(
         issue=issue,
         tracking=False,
+        clicks=False,
     )
 
     return render(request, template, context)
@@ -241,6 +242,34 @@ def preview_issue_text(request, issue_id):
 
     context = dict(
         issue=issue,
+    )
+
+    return render(request, template, context)
+
+
+@login_required
+def click_analysis(request, issue_id):
+    issue = Issue.objects.get(id=issue_id)
+    # template = issue.html_email_template
+    template='basic_newsletter/preview_issue.html'
+    context = dict(
+        issue=issue,
+        tracking=False,
+        clicks=True,
+    )
+
+    return render(request, template, context)
+
+
+@login_required
+def analyze_issue_html(request, issue_id):
+    issue = Issue.objects.get(id=issue_id)
+    template = issue.html_email_template
+
+    context = dict(
+        issue=issue,
+        tracking=False,
+        clicks=True,
     )
 
     return render(request, template, context)

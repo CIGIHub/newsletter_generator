@@ -243,7 +243,7 @@ class Issue(models.Model):
     @property
     def html(self):
         html_body = render_to_string(self.html_email_template,
-                                     dict(issue=self, tracking=False))
+                                     dict(issue=self, tracking=False, clicks=False))
 
         return html_body
 
@@ -251,7 +251,7 @@ class Issue(models.Model):
     @property
     def html_with_tracking(self):
         html_body = render_to_string(self.html_email_template,
-                                     dict(issue=self, tracking=True))
+                                     dict(issue=self, tracking=True, clicks=False))
 
         return html_body
 
@@ -259,7 +259,7 @@ class Issue(models.Model):
     @property
     def text(self):
         txt_body = render_to_string(self.plain_text_email_template,
-                                    dict(issue=self, tracking=False))
+                                    dict(issue=self, tracking=False, clicks=False))
 
         return txt_body
 
@@ -267,7 +267,7 @@ class Issue(models.Model):
     @property
     def text_with_tracking(self):
         txt_body = render_to_string(self.plain_text_email_template,
-                                    dict(issue=self, tracking=True))
+                                    dict(issue=self, tracking=True, clicks=False))
 
         return txt_body
 
@@ -381,6 +381,10 @@ class NewsItem(models.Model):
                 self.scaled_image.save(scaled_image_filename,
                                        upload, save=True)
 
+    @property
+    def clicks(self):
+        link_clicks = settings.MAILER_CLICK_MODEL.objects.filter(click_link__startswith=self.url)
+        return len(link_clicks)
 
     def __str__(self):
         return "%s - %s" % (self.title, self.id)

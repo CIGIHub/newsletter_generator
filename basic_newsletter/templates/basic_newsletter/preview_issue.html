@@ -12,7 +12,11 @@
 <form method="post" action="{% url 'newsletter:preview_issue' issue.id %}" enctype="multipart/form-data">
 {% csrf_token %}
 {#{% include issue.html_email_template %}#}
+{% if clicks %}
+    <iframe src="{% url 'newsletter:analyze_issue_html' issue.id %}"></iframe>
+{% else %}
 <iframe src="{% url 'newsletter:preview_issue_html' issue.id %}"></iframe>
+{% endif %}
 {% if issue.published_state == 'Draft' %}
 	<div class="actions">
 		<input type="submit" name="draft" value="Edit Draft"/>

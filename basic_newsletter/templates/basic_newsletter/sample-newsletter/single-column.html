@@ -1,4 +1,5 @@
 {% load paths %}
+{% load static from staticfiles %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en">
 <head>
@@ -8,6 +9,9 @@
 <style type="text/css">
     {% include 'basic_newsletter/sample-newsletter/single-column/head-style.css' with template=issue.resolved_template %}
 </style>
+{% if clicks %}<link type="text/css" rel="stylesheet" media="all"
+                     href="{% static 'basic_newsletter/css/analysis.css' %}"/>
+{% endif %}
 </head>
 <body style="{% base_styles 'body' %} background-color: #edf1f1;">
     <div style="font-size: 0; line-height: 0; width: 0; height: 0; display: none; overflow: hidden;">
