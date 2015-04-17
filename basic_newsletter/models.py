@@ -383,7 +383,8 @@ class NewsItem(models.Model):
 
     @property
     def clicks(self):
-        link_clicks = settings.MAILER_CLICK_MODEL.objects.filter(click_link__startswith=self.url)
+        link_clicks = settings.MAILER_CLICK_MODEL.objects.filter(
+            click_link__startswith=self.url, message=self.issue.message)
         return len(link_clicks)
 
     def __str__(self):
