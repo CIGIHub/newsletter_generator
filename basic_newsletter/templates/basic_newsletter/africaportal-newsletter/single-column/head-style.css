@@ -1,0 +1,86 @@
+{% load paths %}
+/* RESET STYLES */
+body,
+#bodyTable,
+#bodyCell {
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+img, a img {
+    border: 0;
+    outline: none;
+    text-decoration: none;
+}
+
+/* CLIENT-SPECIFIC STYLES */
+
+/* Force Outlook to provide a "view in browser" message */
+.ReadMsgBody {
+    width: 100%;
+}
+
+.ExternalClass {
+    width: 100%;
+}
+
+/* Force Hotmail to display emails at full width */
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+    line-height: 100%;
+}
+
+
+/* Remove spacing between tables in Outlook 2007 and up */
+table, td {
+    mso-table-lspace: 0pt;
+    mso-table-rspace: 0pt;
+}
+
+/* Force Outlook 2007 and up to provide a "view in browser message. */
+#outlook a {
+    padding: 0;
+}
+
+/* Allow smoother rendering of resized image in Internet Explorer */
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+/* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes */
+body, table, td, p, a, li, blockquote {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+@media only screen and (min-width: 481px){
+    span[class="headerLogoText"]{font-size: 27px !important;}
+    img[id="headerLogoImage"]{font-size: 30px !important;}
+}
+
+@media only screen and (max-width: 480px){
+    /*////// RESET STYLES //////*/
+    td[class="headlineContainer"], td[class="nonHeadlineContainer"]{padding-right:10px !important; padding-left:10px !important;}
+    table[id="emailContainer"], table[id="headerBlock"], table[class="contentBlock"], table[id="footerBlock"], table[id="headlineBlock"]{max-width:480px !important; width:100% !important;}
+    td[id="bodyCell"] {padding: 0 !important;}
+    /*////// CLIENT-SPECIFIC STYLES //////*/
+    body{width:100% !important; min-width:100% !important;} /* Force iOS Mail to render the email at full width. */
+
+    /*////// GENERAL STYLES //////*/
+    h2{font-size:14px !important;}
+    h3, h3 a{font-size:20px !important;}
+
+    td[class="headlineTitle"] h3 a{font-size:22px !important;}
+
+    img[class="headlineImage"]{height:auto !important; max-width:460px !important; width:100% !important;}
+    img[id="headerLogoImage"]{font-size: 30px !important;}
+    span[class="social-link-text"]{font-size: 10px !important;}
+    table[class="dividerTable"]{width: 100% !important;}
+    td[class="headlineImageCell"], td[class="headlineTitle"], td[class="contentHeadline"]{ padding: 5px 0 0 0 !important; }
+    td[class="contentByLine"], td[class="contentText"], td[class="headlineText"]{ padding: 5px 0 5px 0 !important; }
+}

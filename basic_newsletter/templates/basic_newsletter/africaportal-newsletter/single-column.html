@@ -1,0 +1,80 @@
+{% load paths %}
+{% load static from staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+<title>{{ issue.newsletter.title }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+    {% include 'basic_newsletter/sample-newsletter/single-column/head-style.css' with template=issue.resolved_template %}
+</style>
+{% if clicks %}<link type="text/css" rel="stylesheet" media="all"
+                     href="{% static 'basic_newsletter/css/analysis.css' %}"/>
+{% endif %}
+</head>
+<body style="{% base_styles 'body' %} background-color: {{ issue.resolved_template|get_attribute:"body_background_color" }}">
+    <div style="font-size: 0; line-height: 0; width: 0; height: 0; display: none; overflow: hidden;">
+        {% include 'basic_newsletter/africaportal-newsletter/single-column/description.html' %}
+    </div>
+    <center>
+        <!--[if (gte mso 9)|(IE)]>
+         <table><tr><td width="{{ issue.resolved_template|get_attribute:"default_width" }}">
+        <![endif]-->
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"  style="{% base_styles 'table' %} {% base_styles '#bodyTable' %} max-width: {{ issue.resolved_template|get_attribute:"default_width" }}px; width:100%;" id="bodyTable">
+            <tr>
+                <td align="center" valign="top" id="bodyCell" style="{% base_styles 'td' %} padding: 20px 0 20px 0;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="{% base_styles 'table' %}  background-color: #ffffff; width:100%;" id="emailContainer">
+                        <tr>
+                            <td  align="left" valign="top" style="{% base_styles 'td' %} padding: 0 0 0 0; text-align: left; background-color: #ffffff;" id="viewOnWebContainer">
+                                {% include 'basic_newsletter/africaportal-newsletter/single-column/view-on-web.html' with template=issue.resolved_template %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" valign="top" style="{% base_styles 'td' %} padding: 0 0 10px 0;" id="headerContainer">
+                                {% include 'basic_newsletter/africaportal-newsletter/single-column/header.html' with template=issue.resolved_template %}
+                            </td>
+                        </tr>
+                        {% for category in issue.headline_categories %}
+                            {% with stories=issue|get_stories:category %}
+                            {% if stories %}
+                                <tr>
+                                    <td align="center" valign="top" style="{% base_styles 'td' %} padding: 10px 20px 10px 20px;" class="headlineContainer">
+                                        {% include 'basic_newsletter/africaportal-newsletter/single-column/headline.html' with category=category template=issue.resolved_template %}
+
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% endwith %}
+                        {% endfor %}
+                        {% for category in issue.non_headline_categories %}
+                            {% with stories=issue|get_stories:category %}
+                            {% if stories %}
+                                <tr>
+                                    <td align="center" valign="top" style="{% base_styles 'td' %} padding: 10px 20px 10px 20px;" class="nonHeadlineContainer">
+                                        {% include 'basic_newsletter/africaportal-newsletter/single-column/no-image-section.html' with category=category template=issue.resolved_template %}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% endwith %}
+                        {% endfor %}
+                        <tr>
+                            <td align="center" valign="top" style="{% base_styles 'td' %}" id="footerContainer">
+                                {% include 'basic_newsletter/africaportal-newsletter/single-column/footer.html' with template=issue.resolved_template %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  align="center" valign="top" style="{% base_styles 'td' %} padding: 20px 0 20px 0; text-align: center; background-color: #ffffff;" id="subscribeContainer">
+                                {% include 'basic_newsletter/africaportal-newsletter/single-column/subscribe.html' with template=issue.resolved_template %}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <!--[if (gte mso 9)|(IE)]>
+         </td></tr></table>
+        <![endif]-->
+    </center>
+</body>
+</html>

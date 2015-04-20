@@ -1,0 +1,116 @@
+{% load paths %}
+<!--[if (gte mso 9)|(IE)]>
+ <table><tr><td width="{{ issue.resolved_template|get_attribute:"default_inner_width" }}">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0"
+       style="{% base_styles 'table' %} max-width:{{ template|get_attribute:"default_inner_width" }}px; width:100%;"
+       id="headlineBlock">
+    <tr>
+        <td align="left" valign="top" class="contentSectionHeader"
+            style="{% base_styles 'td' %}">
+            <h2 style="font-family: {{ template|get_attribute:"section_header_font" }};
+                    color: {{ template|get_attribute:"section_header_font_color" }};
+                    font-size: {{ template|get_attribute:"section_header_font_size" }};
+                    font-weight: 400;
+                    line-height: 115%;
+                    text-align: left;
+                    text-transform: uppercase;
+                    margin: 0;
+                    padding: 0;">{{ category.display_title }}</h2>
+        </td>
+    </tr>
+    <tr style="line-height: 3px; height: 3px;">
+        <td align="right" valign="top" class="divider"
+            style="{% base_styles 'td' %}">
+            <table border="0" cellpadding="0" cellspacing="0"
+                   width="98.5%" class="dividerTable"
+                   style="{% base_styles 'table' %}  border-top: 3px double #cccccc;">
+                <tr>
+                    <td style="{% base_styles 'td' %} font-size: 0;">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="headlineBlockContent"
+            style="{% base_styles 'td' %}">
+            {% for story in issue|get_stories:category %}
+                <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                       style="{% base_styles 'table' %}">
+                    <tr>
+                        <td align="left" valign="top" class="headlineImageCell"
+                            style="{% base_styles 'td' %} padding: 5px 0 0 10px;">
+                            <a href="{{ story.url }}{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
+                               target="_blank"
+                               style="{% base_styles 'a' %}"><img
+                                    src="{{ story.image_path }}"
+                                    width="{{ story.image_width }}"
+{#                                    height="{{ story.image_height }}"#}
+                                    border="0"
+                                    alt="feature image"
+                                    class="headlineImage"
+                                    style="{% base_styles 'img' %}
+                                            font-family: {{ template|get_attribute:"heading_font" }};
+                                            color: {{ template|get_attribute:"heading_font_color" }};
+                                            font-size: 10px;
+                                            font-weight: 600;
+                                            line-height: 115%;
+                                            text-align: left;
+                                            text-decoration: none;
+                                            display: block;
+                                            max-width: 100%;
+                                            max-height: 100%;
+                                            height: auto;"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top" class="headlineTitle"
+                            style="{% base_styles 'td' %} padding: 5px 0 0 10px;">
+                            <h3 style="margin: 0; padding: 0;
+                                    font-family: {{ template|get_attribute:"heading_font" }};
+                                    color: {{ template|get_attribute:"heading_font_color" }};
+                                    font-size: {{ template|get_attribute:"headline_heading_font_size" }};
+                                    font-weight: 600;
+                                    line-height: 115%;
+                                    text-align: left;
+                                    text-decoration: none;"><a
+                                    href="{{ story.url }}{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
+                                    style="{% base_styles 'a' %}
+                                            color: {{ template|get_attribute:"heading_font_color" }};
+                                            font-size: {{ template|get_attribute:"headline_heading_font_size" }};
+                                            font-weight: 600;
+                                            line-height: 115%;
+                                            text-align: left;">{{ story.title|safe }}</a>
+                            </h3>{% if clicks %}<div class="click-count">{{ story.clicks }}</div>{% endif %}
+                        </td>
+                    </tr>
+                    {% if story.by_line %}
+                        <tr>
+                            <td align="left" valign="top"
+                                class="contentByLine" style="{% base_styles 'td' %} padding: 5px 0 5px 10px; text-transform: uppercase; font-size: {{ template|get_attribute:"byline_font_size" }}; font-family: {{ template|get_attribute:"byline_font" }}; color: {{ template|get_attribute:"byline_font_color" }};">
+                                {{ story.by_line|tweetify|safe }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% if story.description %}
+                    <tr>
+                        <td align="left" valign="top" class="headlineText"
+                            style="{% base_styles 'td' %}
+                                    padding: 5px 0 10px 10px;
+                                    font-size: {{ template|get_attribute:"body_font_size" }};
+                                    font-family: {{ template|get_attribute:"body_font" }};
+                                    line-height: 125%;
+                                    color: {{ template|get_attribute:"body_font_color" }};">
+                            {{ story.description|tweetify|safe }}
+                        </td>
+                    </tr>
+                    {% endif %}
+                </table>
+            {% endfor %}
+        </td>
+    </tr>
+
+</table>
+<!--[if (gte mso 9)|(IE)]>
+ </td></tr></table>
+<![endif]-->

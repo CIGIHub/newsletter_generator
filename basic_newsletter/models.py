@@ -39,7 +39,7 @@ def get_scripts():
 @python_2_unicode_compatible
 class Newsletter(models.Model):
     title = models.CharField(max_length=1024)
-    short_title = models.CharField(max_length=50, blank=True)
+    short_title = models.CharField(max_length=1024, blank=True)
     editor = models.CharField(max_length=50, null=True, blank=True)
     editor_twitter = models.CharField(max_length=25, null=True, blank=True)
     tagline = models.CharField(max_length=1024, null=True, blank=True)

@@ -1,0 +1,6 @@
+{% load paths %}
+{% for category in issue.headline_categories %}
+    {% for story in issue|get_stories:category %}
+    {{ story.description|safe }}
+    {% endfor %}
+{% endfor %}

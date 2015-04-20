@@ -1,0 +1,84 @@
+{% load paths %}
+{% with footer_font="Helvetica, Arial, sans-serif" %}
+<table border="0" cellpadding="0" cellspacing="0"
+       width="100%" bgcolor="{{ issue.resolved_template|get_attribute:"footer_background_color" }}"
+style="{% base_styles 'table' %} background-color: {{ issue.resolved_template|get_attribute:"footer_background_color" }};" id="footerBlock">
+<tr>
+    <td align="center" valign="top" style="{% base_styles 'td' %}">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"
+               style="{% base_styles 'table' %}">
+            <tr>
+                <td align="center" valign="top"
+                    style="{% base_styles 'td' %}  padding: 20px 0 20px 0;" >
+                    <table border="0" cellpadding="0" cellspacing="0"
+                           width="100%" style="{% base_styles 'table' %}">
+                        <tr>
+                            <td align="right" valign="middle"
+                                class="facebookLink" width="35%"
+                                style="{% base_styles 'td' %}">
+                                <a href="https://www.facebook.com/cigionline"
+                                   style="{% base_styles 'a' %} color: #ffffff;"><img
+                                        src="{{ issue.resolved_template|media_url:'cigi-logo' }}"
+                                        alt="CIGI"
+                                        style="{% base_styles 'img' %} display: block;
+                                                    font-family: {{ footer_font }};"></a>
+                            </td>
+
+                            <td align="left" valign="middle"
+                                class="twitterLink" width="30%"
+                                style="{% base_styles 'td' %}">
+                                <a href="https://twitter.com/cigionline"
+                                   style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};"><img
+                                        src="{{ issue.resolved_template|media_url:'saiia-logo' }}"
+                                        alt="CIGI"
+                                        style="{% base_styles 'img' %} display: block; font-family: {{ footer_font }};"></a>
+
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top"
+                    style="{% base_styles 'td' %}  padding: 20px 0 20px 0;" >
+                    <table border="0" cellpadding="0" cellspacing="0"
+                           width="100%" style="{% base_styles 'table' %}">
+                        <tr>
+                            <td align="right" valign="middle" width="53%"
+                                style="{% base_styles 'td' %}">
+                                <a href="https://www.africaportal.org/{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
+                                   style="{% base_styles 'a' %} color: #000000; font-family: {{ footer_font }};">www.africaportal.org</a>
+                            </td>
+                            <td align="center" valign="middle"
+                                class="twitterLink" width="7%"
+                                style="{% base_styles 'td' %}">
+                                    <a href="https://twitter.com/cigionline"
+                                                    style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};"><img
+                                                    src="{{ issue.resolved_template|media_url:'facebook' }}"
+                                                    alt="CIGI"
+                                                    style="{% base_styles 'img' %} display: block; font-family: {{ footer_font }};"></a>
+                            </td>
+                            <td align="left" valign="middle"
+                                class="blogsLink" width="30%"
+                                style="{% base_styles 'td' %}">
+                                <a href="https://www.cigionline.org/blogs/{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
+                                                    style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};"><img
+                                                    src="{{ issue.resolved_template|media_url:'twitter' }}"
+                                                    alt="CIGI"
+                                                    style="{% base_styles 'img' %} display: block; font-family: {{ footer_font }};"></a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+
+
+
+        </table>
+
+    </td>
+</tr>
+</table>
+{% endwith %}
