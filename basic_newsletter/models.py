@@ -327,9 +327,12 @@ class NewsItem(models.Model):
     url = models.URLField("Link to story", default="", blank=True, null=True)
     description = RichTextField(default="", blank=True, null=True)
     by_line = models.CharField(max_length=1024, default="", blank=True, null=True)
-    image = models.ImageField(upload_to=get_upload_folder, null=True,
+    image = models.ImageField(upload_to=get_upload_folder, max_length=1024,
+                              null=True,
                               blank=True)
-    scaled_image = models.ImageField(upload_to=get_upload_folder, null=True,
+    scaled_image = models.ImageField(upload_to=get_upload_folder,
+                                     max_length=1024,
+                                     null=True,
                                      blank=True)
     feature_type = models.ForeignKey("FeatureType")
     issue = models.ForeignKey("Issue")
