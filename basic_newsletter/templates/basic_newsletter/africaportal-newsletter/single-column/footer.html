@@ -45,13 +45,15 @@ style="{% base_styles 'table' %} background-color: {{ issue.resolved_template|ge
                     <table border="0" cellpadding="0" cellspacing="0"
                            width="100%" style="{% base_styles 'table' %}">
                         <tr>
-                            <td align="right" valign="middle" width="53%"
+                            <td align="right" valign="middle" width="100%"
                                 style="{% base_styles 'td' %}">
                                 <a href="https://www.africaportal.org/{% if tracking %}{{ issue.link_tracking|safe }}{% endif %}"
                                    style="{% base_styles 'a' %} color: #000000; font-family: {{ footer_font }};">www.africaportal.org</a>
                             </td>
+                        </tr>
+                        <tr>
                             <td align="center" valign="middle"
-                                class="twitterLink" width="7%"
+                                class="twitterLink" width="50%"
                                 style="{% base_styles 'td' %}">
                                     <a href="https://facebook.com/africaportal"
                                                     style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};"><img
@@ -60,7 +62,7 @@ style="{% base_styles 'table' %} background-color: {{ issue.resolved_template|ge
                                                     style="{% base_styles 'img' %} display: block; font-family: {{ footer_font }};"></a>
                             </td>
                             <td align="left" valign="middle"
-                                class="blogsLink" width="30%"
+                                class="blogsLink" width="50%"
                                 style="{% base_styles 'td' %}">
                                 <a href="https://twitter.com/africaportal"
                                                     style="{% base_styles 'a' %} color: #ffffff; font-family: {{ footer_font }};"><img
