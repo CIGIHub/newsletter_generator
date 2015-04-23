@@ -393,6 +393,24 @@ class NewsItem(models.Model):
     def __str__(self):
         return "%s - %s" % (self.title, self.id)
 
+    @property
+    def unique_clicks(self):
+        link_clicks = settings.MAILER_CLICK_MODEL.objects.filter(
+            click_link__startswith=self.url,
+            message=self.issue.message).values('contact').distinct()
+        return len(link_clicks)
+
+    @property
+    def unique_external_clicks(self):
+        link_clicks = settings.MAILER_CLICK_MODEL.objects.filter(
+            click_link__startswith=self.url,
+            message=self.issue.message,
+            contact__known_internal_person=False).values('contact').distinct()
+        return len(link_clicks)
+
+    def __str__(self):
+        return "%s - %s" % (self.title, self.id)
+
 
 
 # Defines a path to a template and defines which types of

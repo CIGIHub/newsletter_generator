@@ -11,6 +11,7 @@ class NewsItemForm(models.ModelForm):
 
     class Meta:
         model = NewsItem
+        exclude = []
 
 
 class TemplateMediaFileInline(admin.TabularInline):
