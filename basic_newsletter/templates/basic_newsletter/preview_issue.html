@@ -9,6 +9,18 @@
 <h3>{{ issue.newsletter }}: {{ issue.issue_date | date:"F Y" }}</h3>
 <p>Published state: {{ issue.published_state }}</p>
 
+    {% if clicks %}<h3>Overall Statistics:</h3>
+    <div class="stats">
+        <div>Delivered to {{ issue.statistics.delivered }} contacts</div>
+        <div>Opens: {{ issue.statistics.total_opens }} | {{ issue.statistics.unique_opens }}</div>
+        <div>Clicks: {{ issue.statistics.total_clicks }} | {{ issue.statistics.unique_clicks }}</div>
+        <div>Bounces: {{ issue.statistics.bounces }}</div>
+        <div>Unsubscribes: {{ issue.statistics.unsubscribes }}</div>
+        <div>Forwards: {{ issue.statistics.forwards }}</div>
+        <div>Complaints: {{ issue.statistics.complaints }}</div>
+    </div>
+    {% endif %}
+
 <form method="post" action="{% url 'newsletter:preview_issue' issue.id %}" enctype="multipart/form-data">
 {% csrf_token %}
 {#{% include issue.html_email_template %}#}

@@ -287,6 +287,10 @@ class Issue(models.Model):
         ).order_by('feature_type__weight', 'weight')[:count]
         return stories
 
+    @property
+    def statistics(self):
+        return self.message.statistics_set.all()[0]
+
     def __str__(self):
         if self.issue_date:
             return "%s" % self.name
