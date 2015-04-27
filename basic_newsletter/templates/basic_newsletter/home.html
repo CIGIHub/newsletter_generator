@@ -20,7 +20,7 @@
         {% for issue in issue_list_draft %}
                 <li class="{% cycle 'even' 'odd' %}" >
                     <ul>
-                        <li>{{ issue.issue_date|date:"F Y"  }} </li>
+                        <li>{{ issue.issue_date|date:"F j, Y"  }} </li>
                         <li><a href="{% url 'newsletter:edit_issue' issue.id %}">Edit</a></li>
                         <li><a href="{% url 'newsletter:preview_issue' issue.id %}">Preview</a></li>
                         <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Test Email</a></li>
@@ -40,7 +40,7 @@
             {% for issue in issue_list_ready %}
                     <li class="{% cycle 'even' 'odd' %}" >
                         <ul>
-                            <li>{{ issue.issue_date|date:"F Y"  }} </li>
+                            <li>{{ issue.issue_date|date:"F j, Y"  }} </li>
                             <li><a href="{% url 'newsletter:edit_issue' issue.id %}">Edit</a></li>
                             <li><a href="{% url 'newsletter:preview_issue' issue.id %}">Preview</a></li>
                             <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Test Email</a></li>
@@ -60,7 +60,7 @@
         {% for issue in issue_list_published %}
                 <li class="{% cycle 'even' 'odd' %}" >
                     <ul>
-                        <li>{{ issue.issue_date|date:"F Y"  }}</li>
+                        <li>{{ issue.issue_date|date:"F j, Y"  }}</li>
                         <li>(Published Date {{ issue.published_date }})</li>
                         <li><a href="{% url 'newsletter:edit_issue_for_web' issue.id %}">Edit</a></li>
                         <li><a href="{% url 'newsletter:preview_issue' issue.id %}">View</a></li>
