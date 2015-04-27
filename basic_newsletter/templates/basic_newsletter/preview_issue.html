@@ -12,10 +12,10 @@
     {% if clicks %}<h3>Overall Statistics:</h3>
     <div class="stats">
         <div>Delivered to {{ issue.statistics.delivered }} contacts</div>
-        <div>Opens: {{ issue.statistics.total_opens }} | {{ issue.statistics.unique_opens }}</div>
-        <div>Clicks: {{ issue.statistics.total_clicks }} | {{ issue.statistics.unique_clicks }}</div>
-        <div>Bounces: {{ issue.statistics.bounces }}</div>
-        <div>Unsubscribes: {{ issue.statistics.unsubscribes }}</div>
+        <div>Opens: {{ issue.statistics.total_opens }} opens | {{ issue.statistics.unique_opens }} contacts | {{ issue.statistics.open_rate|floatformat }}%</div>
+        <div>Clicks: {{ issue.statistics.total_clicks }} clicks | {{ issue.statistics.unique_clicks }} contacts | {{ issue.statistics.click_rate|floatformat }}%</div>
+        <div>Bounces: {{ issue.statistics.bounces }} contacts | {{ issue.statistics.bounce_rate|floatformat }}%</div>
+        <div>Unsubscribes: {{ issue.statistics.unsubscribes }} contacts</div>
         <div>Forwards: {{ issue.statistics.forwards }}</div>
         <div>Complaints: {{ issue.statistics.complaints }}</div>
     </div>
