@@ -66,7 +66,7 @@
                         <li><a href="{% url 'newsletter:preview_issue' issue.id %}">View</a></li>
                         <li><a href="{% url 'newsletter:reupload_issue' issue.id %}">Re-upload HTML</a></li>
                         {% if issue.statistics %}
-                        <li><a href="{% url 'newsletter:click_analysis' issue.id %}">Analytics - {{ issue.statistics.open_rate }}% opens, {{ issue.statistics.click_rate }}% clicks</a></li>
+                        <li><a href="{% url 'newsletter:click_analysis' issue.id %}">Analytics - {{ issue.statistics.open_rate|floatformat }}% opens, {{ issue.statistics.click_rate|floatformat }}% clicks</a></li>
                         {% endif %}
                     </ul>
                 </li>
