@@ -102,8 +102,7 @@ class Issue(models.Model):
                                        choices=PUBLISHED_STATES)
 
     message = models.ForeignKey(settings.MAILER_MESSAGE_MODEL, null=True, blank=True)
-    story_categories = models.ManyToManyField("FeatureType", null=True,
-                                              blank=True)
+    story_categories = models.ManyToManyField("FeatureType")
 
     @property
     def headline_categories(self):
@@ -426,8 +425,7 @@ class Template(models.Model):
     plain_text_filepath = models.CharField(max_length=1024, null=True,
                                            blank=True)
     subject_filepath = models.CharField(max_length=1024, null=True, blank=True)
-    supported_feature_types = models.ManyToManyField("FeatureType", null=True,
-                                                     blank=True)
+    supported_feature_types = models.ManyToManyField("FeatureType")
 
     def __str__(self):
         return '%s' % self.name
