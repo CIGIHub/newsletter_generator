@@ -288,7 +288,11 @@ class Issue(models.Model):
 
     @property
     def statistics(self):
-        return self.message.statistics_set.all()[0]
+        statistics = self.message.statistics_set.all()
+
+        if statistics:
+            return statistics[0]
+        return []
 
     def __str__(self):
         if self.issue_date:
