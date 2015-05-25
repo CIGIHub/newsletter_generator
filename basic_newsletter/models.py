@@ -211,10 +211,18 @@ class Issue(models.Model):
 
             name = self.html_file_name
             script_name = self.newsletter.upload_script
-            process = subprocess.Popen([script_name,
-                                        name,
-                                        html_file_path,
-                                        drupal_create_script])
+            process = subprocess.Popen(
+                [script_name,
+                 name,
+                 html_file_path,
+                 drupal_create_script],
+                env=dict(os.environ,
+                         **{"AWS_ACCESS_KEY_ID":
+                                settings.AWS_S3_ACCESS_KEY_ID,
+                            "AWS_SECRET_ACCESS_KEY":
+                                settings.AWS_S3_SECRET_ACCESS_KEY}
+                         )
+            )
             process.wait()
 
         for file_path in files_to_remove:
