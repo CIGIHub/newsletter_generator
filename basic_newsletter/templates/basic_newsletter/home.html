@@ -65,6 +65,7 @@
                         <li><a href="{% url 'newsletter:edit_issue_for_web' issue.id %}">Edit</a></li>
                         <li><a href="{% url 'newsletter:preview_issue' issue.id %}">View</a></li>
                         <li><a href="{% url 'newsletter:reupload_issue' issue.id %}">Re-upload HTML</a></li>
+                        <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Internal Email</a></li>
                         {% if issue.statistics %}
                         <li><a href="{% url 'newsletter:click_analysis' issue.id %}">Analytics - {{ issue.statistics.open_rate|floatformat }}% opens, {{ issue.statistics.click_rate|floatformat }}% clicks</a></li>
                         {% endif %}
