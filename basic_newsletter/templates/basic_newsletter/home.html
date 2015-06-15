@@ -21,7 +21,6 @@
                 <li class="{% cycle 'even' 'odd' %}" >
                     <ul>
                         <li>{{ issue.issue_date|date:"F j, Y"  }} </li>
-                        <li><a href="{% url 'newsletter:edit_issue' issue.id %}">Edit</a></li>
                         <li><a href="{% url 'newsletter:preview_issue' issue.id %}">Preview</a></li>
                         <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Test Email</a></li>
                         <li><a href="{% url 'newsletter:delete_issue' issue.id %}">Delete</a></li>
@@ -41,7 +40,6 @@
                     <li class="{% cycle 'even' 'odd' %}" >
                         <ul>
                             <li>{{ issue.issue_date|date:"F j, Y"  }} </li>
-                            <li><a href="{% url 'newsletter:edit_issue' issue.id %}">Edit</a></li>
                             <li><a href="{% url 'newsletter:preview_issue' issue.id %}">Preview</a></li>
                             <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Test Email</a></li>
                             <li><a href="{% url 'newsletter:publish_issue' issue.id %}">Publish</a></li>
@@ -62,7 +60,6 @@
                     <ul>
                         <li>{{ issue.issue_date|date:"F j, Y"  }}</li>
                         <li>(Published Date {{ issue.published_date }})</li>
-                        <li><a href="{% url 'newsletter:edit_issue_for_web' issue.id %}">Edit</a></li>
                         <li><a href="{% url 'newsletter:preview_issue' issue.id %}">View</a></li>
                         <li><a href="{% url 'newsletter:reupload_issue' issue.id %}">Re-upload HTML</a></li>
                         <li><a href="{% url 'newsletter:test_issue' issue.id %}">Send Internal Email</a></li>

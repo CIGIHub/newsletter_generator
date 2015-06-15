@@ -31,14 +31,12 @@
 {% endif %}
 {% if issue.published_state == 'Draft' %}
 	<div class="actions">
-		<input type="submit" name="draft" value="Edit Draft"/>
         <input type="submit" name="send_email" value="Send Test Email"/>
 	    <input type="submit" name="to_test" value="Ready to Test"/>
         <input type="submit" name="close" value="Close"/>
 	</div>
 {% elif issue.published_state == 'Ready to Test' %}
     <div class="actions">
-		<input type="submit" name="draft" value="Edit Draft"/>
 	    <input type="submit" name="send_email" value="Send Test Email"/>
         <input type="submit" name="close" value="Close"/>
 	</div>

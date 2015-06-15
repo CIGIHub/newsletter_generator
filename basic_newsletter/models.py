@@ -296,10 +296,11 @@ class Issue(models.Model):
 
     @property
     def statistics(self):
-        statistics = self.message.statistics_set.all()
+        if self.message:
+            statistics = self.message.statistics_set.all()
 
-        if statistics:
-            return statistics[0]
+            if statistics:
+                return statistics[0]
         return []
 
     def __str__(self):
