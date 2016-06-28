@@ -188,6 +188,8 @@ class Issue(models.Model):
         msg.send()
 
     def upload(self, re_upload=False):
+        import pdb; pdb.set_trace()
+
         files_to_remove = []
 
         drupal_create_script = ""
@@ -226,7 +228,9 @@ class Issue(models.Model):
             process.wait()
 
         for file_path in files_to_remove:
-            os.remove(file_path)
+            # os.remove(file_path)
+            import pdb; pdb.set_trace()
+            pass
 
     @property
     def html_file_name(self):
